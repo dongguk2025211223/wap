@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중간에 사이트 링크 첨부 예시</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 40px;
+        }
+        .content {
+            background: #fff;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 36px 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+        .site-link {
+            display: inline-block;
+            margin: 24px 0;
+            padding: 12px 28px;
+            background: linear-gradient(90deg, #1976d2 0%, #43cea2 100%);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+        .site-link:hover {
+            background: linear-gradient(90deg, #43cea2 0%, #1976d2 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2>내가 만든 웹사이트 소개</h2>
+        <p>
+            이 프로젝트는 HTML, CSS, JavaScript를 활용하여 제작되었습니다.<br>
+            아래 링크를 클릭하면 실제 사이트로 이동할 수 있습니다.
+        </p>
+        <!-- 
+            사이트 링크를 중간에 첨부할 수 있는 부분입니다.
+           
+        -->
+        <a class="site-link" href="https://dongguk2025211223.github.io/wap/" target="_blank">내 미래 이력서</a>
+        <a class="site-link" href="https://dongguk2025211223.github.io/tests/test.html" target="_blank" style="margin-left: 12px;">괭장한 사이트트</a>
+        <p>
+            위 사이트에서는 다양한 웹 기술을 활용하여 인터랙티브한 요소와 반응형 디자인을 구현하였습니다.<br>
+            또한, 사용자 경험을 고려하여 직관적인 네비게이션과 시각적으로 매력적인 레이아웃을 적용하였습니다.
+        </p>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+            <a href="index.html" class="site-link">
+                처음으로 돌아가기
+            </a>
+</body>
+</html>
