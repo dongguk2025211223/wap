@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 문서 인코딩 설정 -->
+    <meta charset="UTF-8" />
+
+    <!-- 모바일 및 반응형 레이아웃을 위한 뷰포트 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- 브라우저 탭에 표시될 제목 -->
+    <title>Loading Experience</title>
+
+    <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="css/loading.css" />
+</head>
+<body>
+    <!-- 전체 페이지를 덮는 로딩 화면 -->
+    <div class="loading-screen">
+        <!-- 로딩 애니메이션과 진행 바를 포함하는 컨테이너 -->
+        <div class="loading-container">
+            <!-- 회전하는 링 형태의 로더 -->
+            <div class="loader-ring">
+                <!-- 중앙에서 맥박처럼 커졌다 작아지는 코어 원 -->
+                <div class="loader-core"></div>
+            </div>
+
+            <!-- 진행 바와 텍스트를 포함하는 영역 -->
+            <div class="progress-container">
+                <!-- 진행률 숫자 표시 (예: 42%) -->
+                <div class="progress-text">0%</div>
+
+                <!-- 전체 진행 바 -->
+                <div class="progress-bar">
+                    <!-- 채워지는 부분 (실제 진행률을 나타냄) -->
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+            <!-- 로딩 중이라는 메시지 텍스트 -->
+            <div class="loading-text">Loading</div>
+        </div>
+    </div>
+
+    <!-- 로딩 후에 나타날 메인 콘텐츠 -->
+    <main class="content">
+        <h1>Welcome to the Experience</h1>
+        <p style="margin: 1rem 0; font-size: 1.2rem; opacity: 0.9;">
+            Loading screen demonstration complete!
+        </p>
+        <!-- 페이지를 새로고침할 수 있는 버튼 -->
+        <button class="refresh-btn" onclick="refreshPage()">Try Again</button>
+    </main>
+
+    <script>
+        // 주요 요소 선택
+        const loadingScreen = document.querySelector('.loading-screen');
+        const content = document.querySelector('.content');
+        const progress = document.querySelector('.progress');
+        const progressText = document.querySelector('.progress-text');
+        const loadingContainer = document.querySelector('.loading-container');
+
+        // 입자(Particle)를 생성하는 함수
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+
+            // 좌우로 랜덤한 이동 값을 설정
+            const translateX = (Math.random() - 0.5) * 100;
+            particle.style.setProperty('--translateX', `${translateX}px`);
+
+            // 가로 위치를 무작위로 설정
+            particle.style.left = `${Math.random() * 100}%`;
+
+            // 애니메이션 적용
+            particle.style.animation = 'particleFloat 3s ease-in-out forwards';
+
+            // 화면에 추가
+            loadingContainer.appendChild(particle);
+
+            // 애니메이션이 끝나면 DOM에서 제거
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+
+        // 일정 간격으로 입자 생성
+        const particleInterval = setInterval(() => {
+            createParticle();
+        }, 300); // 0.3초마다 생성
+
+        // 진행률 시뮬레이션
+        let currentProgress = 0;
+        const interval = setInterval(() => {
+            currentProgress += Math.random() * 12; // 랜덤한 증가
+            if (currentProgress > 100) currentProgress = 100; // 100% 초과 방지
+
+            // 진행 바 채우기 및 텍스트 갱신
+            progress.style.width = currentProgress + '%';
+            progressText.textContent = Math.round(currentProgress) + '%';
+
+            // 100% 도달 시 애니메이션 종료 및 화면 전환
+            if (currentProgress === 100) {
+                clearInterval(interval); // 진행률 업데이트 중지
+                clearInterval(particleInterval); // 입자 생성 중지
+                setTimeout(hideLoadingScreen, 500); // 약간의 딜레이 후 전환
+            }
+        }, 200); // 0.2초마다 실행
+
+        // 마우스 움직임에 따라 로딩 링이 회전하도록 설정
+        document.addEventListener('mousemove', (e) => {
+            if (loadingScreen.style.opacity !== '0') {
+                const ring = document.querySelector('.loader-ring');
+                const rect = ring.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                // 마우스 좌표 기준 회전 값 계산
+                const deltaX = (e.clientX - centerX) / 30;
+                const deltaY = (e.clientY - centerY) / 30;
+
+                // 회전 적용
+                ring.style.transform = `perspective(1000px) rotateX(${deltaY}deg) rotateY(${-deltaX}deg)`;
+            }
+        });
+
+        // 로딩 화면을 숨기고 본문을 표시하는 함수
+        function hideLoadingScreen() {
+            loadingScreen.style.opacity = '0'; // 서서히 사라짐
+            setTimeout(() => {
+                loadingScreen.style.display = 'none'; // 완전히 제거
+                content.classList.add('visible'); // 본문 표시
+            }, 800); // 페이드 아웃 시간과 일치
+        }
+
+        // 페이지 새로고침 함수
+        function refreshPage() {
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
