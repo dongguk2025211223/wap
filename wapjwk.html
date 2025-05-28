@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 반응형 웹을 위한 뷰포트 설정 -->
+    <title>2035년 본인의 이력서 만들기</title> <!-- 브라우저 탭에 표시될 제목 -->
+    <link rel="stylesheet" href="css/cssjwk.css"> <!-- 외부 CSS 파일 연결 -->
+    <style>
+        /* 추가 스타일이 필요하면 여기에 작성 */
+    </style>
+</head>
+<body style="background: linear-gradient(120deg, #ff5e62 0%, #ff9966 20%, #f9d423 40%, #a8ff78 60%, #43cea2 75%, #1976d2 90%, #9d50bb 100%); min-height: 100vh; margin:0;">
+    <script>
+        // 마우스 이펙트: 커서 따라다니는 원형 효과 생성
+        const cursor = document.createElement('div'); // div 요소 생성
+        cursor.className = 'cursor-effect'; // 클래스명 cursor-effect 지정
+        document.body.appendChild(cursor); // body에 커서 이펙트 추가
+
+        // 마우스 움직임에 따라 커서 위치 이동
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px'; // 마우스 X좌표에 위치
+            cursor.style.top = e.clientY + 'px';  // 마우스 Y좌표에 위치
+        });
+
+        // 마우스 클릭 시 커서 효과 확대
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('active'); // active 클래스 추가(확대)
+        });
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('active'); // active 클래스 제거(원래 크기)
+        });
+
+        // 링크, 버튼, .resume-link에 마우스 올릴 때 커서 강조 효과
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a, button, .resume-link').forEach(link => {
+                link.addEventListener('mouseenter', () => cursor.classList.add('active')); // 진입 시 커서 확대
+                link.addEventListener('mouseleave', () => cursor.classList.remove('active')); // 벗어날 때 원래 크기
+            });
+        });
+    </script>
+    <div class="resume">
+        <h1>정우강</h1> <!-- 이름 표시 -->
+        <p>
+            <strong>이메일:</strong> hong2035@email.com<br> <!-- 이메일 정보 -->
+            <strong>연락처:</strong> 010-1234-5678<br> <!-- 연락처 정보 -->
+            <strong>주소:</strong> 서울특별시 강남구 미래로 2035 <!-- 주소 정보 -->
+        </p>
+
+        <div class="section">
+            <div class="section-title">프로필</div> <!-- 섹션 제목 -->
+            <p>
+                <strong>우강</strong><br>
+                소프트웨어 개발자 | 혁신적인 기술 솔루션 창조자 | 사용자 중심의 고품질 애플리케이션 개발
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">경력 목표</div>
+            <ul>
+                <li>글로벌 IT 기업 또는 혁신적인 스타트업에서 소프트웨어 엔지니어로 활약</li>
+                <li>AI 기반 애플리케이션, 백엔드 시스템, 클라우드 솔루션 개발에 기여</li>
+                <li>사용자가 직관적으로 활용할 수 있는 최고의 소프트웨어를 설계</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">기술 스택</div>
+            <ul>
+                <li>프로그래밍 언어: Python, Java, JavaScript, TypeScript</li>
+                <li>프레임워크 & 플랫폼: React, Node.js, Spring Boot, TensorFlow</li>
+                <li>데이터 & AI: 머신러닝 기반 최적화 시스템, 빅데이터 처리</li>
+                <li>시스템 설계: 마이크로서비스 아키텍처, 클라우드 네이티브 개발</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">수상 및 성취</div>
+            <ul>
+                <li>🏆 2034 | 글로벌 소프트웨어 개발 대회 최우수상</li>
+                <li>💎 2032 | 오픈소스 프로젝트 기여, GitHub 50,000+ 스타 획득</li>
+                <li>🚀 2030 | 주요 IT 기업에서 "최우수 신입 개발자" 선정</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">비전</div>
+            <p>"2035년, 누구나 쉽게 사용할 수 있는 혁신적인 소프트웨어를 개발하는 실력 있는 엔지니어가 될 것입니다."</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">자기소개</div>
+            <p>AI와 데이터 과학 분야에서 10년 이상의 경험을 가진 전문가입니다. 혁신적인 솔루션 개발과 팀 리딩에 강점을 가지고 있습니다.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">학력</div>
+            <ul>
+                <li>2031 ~ 2035: 미래대학교 인공지능학과 박사</li>
+                <li>2027 ~ 2031: 미래대학교 컴퓨터공학과 학사</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">경력</div>
+            <ul>
+                <li>2035 ~ 현재: 미래AI(주) 수석 연구원</li>
+                <li>2032 ~ 2035: AI랩 연구원</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">기술 및 역량</div>
+            <ul>
+                <li>Python, JavaScript, C++</li>
+                <li>머신러닝, 딥러닝, 데이터 분석</li>
+                <li>프로젝트 관리 및 팀 리딩</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">자격증</div>
+            <ul>
+                <li>AI 전문가 자격증 (2034)</li>
+                <li>데이터 분석 전문가 (2033)</li>
+            </ul>
+        </div>
+
+        <!-- 처음으로 돌아가기 버튼 영역 -->
+        <div style="text-align:center; margin-top:40px;">
+            <a href="index.html" class="back-btn">
+                처음으로 돌아가기 <!-- 메인(index.html)으로 돌아가는 버튼 -->
+            </a>
+        </div>
+    </div>
+    <!--
+        - 배경색, 글자색, 패딩, 둥근 모서리, 그림자, 마우스 오버 효과 등은 cssjwk.css에서 관리
+    -->
+</body>
+</html>
