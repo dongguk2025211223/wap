@@ -1,0 +1,181 @@
+/* 
+            body 스타일
+            - 배경을 그라데이션으로 설정
+            - 폰트 지정
+            - flex로 화면 중앙에 컨텐츠 배치
+            - 높이 100vh로 전체 화면 사용
+            - margin 제거, overflow hidden으로 스크롤 제거
+        */
+body {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); /* 보라~파랑 그라데이션 배경 */
+    font-family: 'Segoe UI', Arial, sans-serif; /* 전체 폰트 지정 */
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 뷰포트 전체 높이 사용 */
+    margin: 0; /* 기본 마진 제거 */
+    overflow: hidden; /* 스크롤바 숨김 */
+}
+
+/*
+            .link-box
+            - 반투명 흰 배경, 패딩, 둥근 모서리, 그림자
+            - 텍스트 중앙 정렬, z-index로 위에 표시
+            - floatBox 애니메이션으로 부드럽게 위아래로 움직임
+        */
+.link-box {
+    background: rgba(255, 255, 255, 0.95); /* 반투명 흰 배경 */
+    padding: 48px 70px; /* 넉넉한 안쪽 여백 */
+    border-radius: 24px; /* 둥근 모서리 */
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18), 0 1.5px 8px #fff; /* 그림자 효과 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    position: relative; /* 상대 위치 */
+    z-index: 1; /* 위에 표시 */
+    animation: floatBox 2.5s ease-in-out infinite alternate; /* 위아래로 부드럽게 움직임 */
+}
+
+/* 
+            floatBox 애니메이션
+            - 위아래로 살짝 이동하며 크기 변화
+        */
+@keyframes floatBox {
+    0% {
+        transform: translateY(0px) scale(1); /* 원래 위치, 원래 크기 */
+    }
+
+    100% {
+        transform: translateY(-18px) scale(1.03); /* 위로 18px, 약간 확대 */
+    }
+}
+
+/*
+            .link-box h2
+            - 제목 스타일: 여백, 색상, 크기, 자간, 그림자, fadeInDown 애니메이션
+        */
+.link-box h2 {
+    margin-bottom: 28px; /* 아래 여백 */
+    color: #2c3e50; /* 진한 남색 */
+    font-size: 2.2rem; /* 큰 글씨 */
+    letter-spacing: 2px; /* 자간 */
+    text-shadow: 0 2px 8px #d1c4e9; /* 연보라 그림자 */
+    animation: fadeInDown 1.2s; /* 아래로 자연스럽게 등장 */
+}
+
+/* 
+            fadeInDown 애니메이션
+            - 위에서 아래로 자연스럽게 등장
+        */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0; /* 투명하게 시작 */
+        transform: translateY(-40px); /* 위에서 시작 */
+    }
+
+    100% {
+        opacity: 1; /* 불투명하게 */
+        transform: translateY(0); /* 제자리 */
+    }
+}
+
+/*
+            .resume-link
+            - 버튼 스타일: 배경 그라데이션, 흰색 글씨, 둥근 모서리, 그림자, 애니메이션
+            - hover 시 색상, 크기, 그림자 변화
+        */
+.resume-link {
+    display: inline-block; /* 인라인 블록(버튼처럼) */
+    padding: 16px 38px; /* 버튼 안쪽 여백 */
+    background: linear-gradient(90deg, #2c3e50 60%, #8ec5fc 100%); /* 진한 남색~파랑 그라데이션 */
+    color: #fff; /* 글자색 흰색 */
+    border-radius: 12px; /* 둥근 모서리 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-size: 1.3rem; /* 글자 크기 */
+    font-weight: bold; /* 굵은 글씨 */
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12); /* 그림자 */
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s; /* 부드러운 효과 */
+    position: relative; /* 가상요소 위치 기준 */
+    overflow: hidden; /* 가상요소 넘침 숨김 */
+    animation: fadeInUp 1.5s; /* 아래에서 위로 자연스럽게 등장 */
+}
+
+/*
+            .resume-link::before
+            - 버튼에 빛나는 효과를 주는 가상 요소
+            - hover 시 왼쪽에서 오른쪽으로 이동
+        */
+.resume-link::before {
+    content: ""; /* 내용 없음 */
+    position: absolute; /* 절대 위치 */
+    left: -75%; /* 왼쪽 바깥에서 시작 */
+    top: 0;
+    width: 50%; /* 버튼의 절반 너비 */
+    height: 100%; /* 버튼 전체 높이 */
+    background: rgba(255, 255, 255, 0.25); /* 반투명 흰색 */
+    transform: skewX(-20deg); /* 사선 효과 */
+    transition: left 0.5s; /* 이동 부드럽게 */
+}
+
+.resume-link:hover {
+    background: linear-gradient(90deg, #2980b9 60%, #e0c3fc 100%); /* hover 시 밝은 파랑~보라 그라데이션 */
+    transform: scale(1.07) rotate(-1deg); /* 약간 확대, 살짝 회전 */
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.22); /* 그림자 강조 */
+}
+
+.resume-link:hover::before {
+    left: 120%; /* 오른쪽 바깥으로 이동(빛 효과) */
+}
+
+/*
+            .star
+            - 랜덤 위치에 배치되는 작은 별
+            - 반짝임 애니메이션 적용
+            - pointer-events: none으로 클릭 방지
+        */
+.star {
+    position: absolute; /* 절대 위치 */
+    width: 2.5px; /* 작은 크기 */
+    height: 2.5px;
+    background: #fff; /* 흰색 */
+    border-radius: 50%; /* 원형 */
+    opacity: 0.7; /* 약간 투명 */
+    animation: twinkle 2s infinite alternate; /* 반짝임 애니메이션 */
+    pointer-events: none; /* 마우스 이벤트 무시 */
+}
+
+/*
+            twinkle 애니메이션
+            - opacity를 변화시켜 별이 반짝이는 효과
+        */
+@keyframes twinkle {
+    0% {
+        opacity: 0.7; /* 밝게 시작 */
+    }
+
+    100% {
+        opacity: 0.2; /* 어둡게 끝 */
+    }
+}
+
+/*
+            .cursor-effect
+            - 마우스 커서 효과: 원형, 반투명, 밝은 색상, blend-mode로 배경과 자연스럽게 섞임
+            - active 클래스가 추가되면 크기와 투명도 변화
+        */
+.cursor-effect {
+    position: fixed; /* 화면 고정 위치 */
+    pointer-events: none; /* 마우스 이벤트 무시 */
+    border-radius: 50%; /* 원형 */
+    width: 32px; /* 크기 */
+    height: 32px;
+    background: radial-gradient(circle, #fff 0%, #8ec5fc 60%, transparent 100%); /* 밝은 원형 그라데이션 */
+    opacity: 0.7; /* 약간 투명 */
+    mix-blend-mode: lighten; /* 배경과 자연스럽게 섞임 */
+    transform: translate(-50%, -50%) scale(1); /* 마우스 위치에 맞게 이동 */
+    transition: transform 0.1s, opacity 0.2s; /* 부드러운 효과 */
+    z-index: 9999; /* 가장 위에 표시 */
+}
+
+.cursor-effect.active {
+    transform: translate(-50%, -50%) scale(1.7); /* 커서 확대 */
+    opacity: 1; /* 더 선명하게 */
+}
